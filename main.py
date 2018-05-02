@@ -1,4 +1,3 @@
-# https://docs.aws.amazon.com/general/latest/gr/sigv4-signed-request-examples.html#sig-v4-examples-get-auth-header
 import sys, os, base64, datetime, hashlib, hmac, requests, csv
 
 from dotenv import load_dotenv
