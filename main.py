@@ -100,21 +100,23 @@ with open('out.csv', 'w', newline='') as csv_out_file:
                 }
                 #Build info for each time range into object output data
                 for usage_stat in usage_stats:
+                    rank = usage_stat.find("Rank")
                     pv = usage_stat.find("PageViews")
+                    reach = usage_stat.find("Reach")
                     
                     output_node = {
-                        'rank_value': pv.find('Rank').find('Value').text,
-                        'rank_delta': pv.find('Rank').find('Delta').text,
+                        'rank_value': rank.find('Value').text,
+                        'rank_delta': rank.find('Delta').text,
 
-                        'reach_per_million_value': pv.find('PerMillion').find('Value').text,
-                        'reach_per_million_delta': pv.find('PerMillion').find('Delta').text,
-                        'reach_rank_value': pv.find('Rank').find('Value').text,
-                        'reach_rank_delta': pv.find('Rank').find('Delta').text,
+                        'reach_per_million_value': reach.find('PerMillion').find('Value').text,
+                        'reach_per_million_delta': reach.find('PerMillion').find('Delta').text,
+                        'reach_rank_value': reach.find('Rank').find('Value').text,
+                        'reach_rank_delta': reach.find('Rank').find('Delta').text,
 
                         'page_views_per_million_value': pv.find('PerMillion').find('Value').text,
                         'page_views_per_million_delta': pv.find('PerMillion').find('Delta').text,
-                        'page_views_rank_value': pv.find('Rank').find('Value').text,
-                        'page_views_rank_delta': pv.find('Rank').find('Delta').text,
+                        'page_views_rank_value': pv.find('PageViews').find('Value').text,
+                        'page_views_rank_delta': pv.find('PageViews').find('Delta').text,
                         'page_views_user_value': pv.find('PerUser').find('Value').text,
                         'page_views_user_delta': pv.find('PerUser').find('Delta').text
                     }
